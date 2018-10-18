@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{% assign counter = 0 %}
+  {% for item in site.categories[page.tag]%}
+      {% assign counter=counter | plus:1 %}
+  {% endfor %}
+<div class="posts">
+  <p class="message">{{ counter }} {% if counter == 1 %} thought {% else %} thoughts {% endif %} about <small>{{ page.tag }}</small><p>
+  {% for post in site.categories[page.tag] %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}/{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+
+    {{ post.content }}
+  </div>
+  {% endfor %}
+</div>
