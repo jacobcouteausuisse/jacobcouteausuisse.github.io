@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "potency : automatic trading using RSI indicator"
-date:   2018-10-13 21:52:51 -0400
 categories: 
     - asteroidlabs
 ---
