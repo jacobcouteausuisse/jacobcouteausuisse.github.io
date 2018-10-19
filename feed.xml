@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://couteausuis.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://couteausuis.se/" rel="alternate" type="text/html" /><updated>2018-10-18T21:23:54-04:00</updated><id>https://couteausuis.se/feed.xml</id><title type="html">couteausuis.se</title><subtitle>projects</subtitle><author><name>Jacob Roy</name><email>jacob@asteroidlabs.io</email></author><entry><title type="html">potency : automatic trading using RSI indicator</title><link href="https://couteausuis.se/asteroidlabs/2018/10/13/potency/" rel="alternate" type="text/html" title="potency : automatic trading using RSI indicator" /><published>2018-10-13T00:00:00-04:00</published><updated>2018-10-13T00:00:00-04:00</updated><id>https://couteausuis.se/asteroidlabs/2018/10/13/potency</id><content type="html" xml:base="https://couteausuis.se/asteroidlabs/2018/10/13/potency/">&lt;p&gt;I very much like the RSI indicator for swing trading. It provides and easy way to understand the current market trend, and can be easily interpreted by a program since it’s only a single number.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://couteausuis.se/feed.xml" rel="self" type="application/atom+xml" /><link href="https://couteausuis.se/" rel="alternate" type="text/html" /><updated>2018-10-18T21:32:30-04:00</updated><id>https://couteausuis.se/feed.xml</id><title type="html">couteausuis.se</title><subtitle>projects</subtitle><author><name>Jacob Roy</name><email>jacob@asteroidlabs.io</email></author><entry><title type="html">potency : automatic trading using RSI indicator</title><link href="https://couteausuis.se/asteroidlabs/2018/10/13/potency/" rel="alternate" type="text/html" title="potency : automatic trading using RSI indicator" /><published>2018-10-13T00:00:00-04:00</published><updated>2018-10-13T00:00:00-04:00</updated><id>https://couteausuis.se/asteroidlabs/2018/10/13/potency</id><content type="html" xml:base="https://couteausuis.se/asteroidlabs/2018/10/13/potency/">&lt;p&gt;I very much like the RSI indicator for swing trading. It provides and easy way to understand the current market trend, and can be easily interpreted by a program since it’s only a single number.&lt;/p&gt;
 
-&lt;p&gt;This project is going to be build using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance. Naming is project is always a weird process. This time the protorype will carry the name &lt;em&gt;potency&lt;/em&gt;, because it is very potent. Do you see how funny I am? I thought so.&lt;/p&gt;
+&lt;p&gt;This project is going to be built using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance. Naming a project is always a weird process. This time the prototype will carry the name &lt;em&gt;potency&lt;/em&gt;, because it is very potent. Do you see how funny I am? I thought so.&lt;/p&gt;
 
 &lt;h2 id=&quot;goals&quot;&gt;goals&lt;/h2&gt;
-&lt;p&gt;Basicaly, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ RSI from the (local) historic data, and send it to me using Telegram. Eventualy, if it bahaves well, I want the trading to be automated.&lt;/p&gt;
+&lt;p&gt;Basically, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ RSI from the (local) historic data, and send it to me using Telegram. Eventually, if it behaves well, I want the trading to be automated.&lt;/p&gt;
 
 &lt;h2 id=&quot;warmup&quot;&gt;warmup&lt;/h2&gt;
-&lt;p&gt;As with all exercices, we need some warmup first. In this case, we will query the last 20 (14 is the real minimum) candles from Binance, with which we can calculate the RSI.
-Using &lt;a href=&quot;https://github.com/zoeyg/binance&quot;&gt;zoeyg’s binance&lt;/a&gt; module, I can easily query market data from binance using :&lt;/p&gt;
+&lt;p&gt;As with all exercises, we need some warmup first. In this case, we will query the last 20 (14 is the real minimum) candles from Binance, with which we can calculate the RSI.
+Using &lt;a href=&quot;https://github.com/zoeyg/binance&quot;&gt;zoeyg’s binance&lt;/a&gt; module, I can easily query market data from Binance using :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;binanceRest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;klines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
@@ -21,8 +21,8 @@ Using &lt;a href=&quot;https://github.com/zoeyg/binance&quot;&gt;zoeyg’s binan
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;The resulting data cointains a bunch of information on the specific candle, and we’ll store it in a MongoDB instance using the appropriate Schema.
-Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a forEach() loop. For the sake of your hair, watch out for NodeJS asychronocity.
+&lt;p&gt;The resulting data contains a bunch of information on the specific candle, and we’ll store it in a MongoDB instance using the appropriate Schema.
+Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a forEach() loop. For the sake of your hair, watch out for NodeJS asychronicity.
 The process will not exit if mongoose still has a connection idle, so we need to manage that. I used a decreasing counter in the mongo.save() loop so that if there’s no more data to be saved, it will kill the connection.&lt;/p&gt;
 
 &lt;h2 id=&quot;feed&quot;&gt;feed&lt;/h2&gt;
@@ -58,10 +58,10 @@ The process will not exit if mongoose still has a connection idle, so we need to
   &lt;span class=&quot;nx&quot;&gt;bot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chatId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pairs that have a RSI below 35 on the 30m interval. Pretty neat!&lt;/p&gt;
+&lt;p&gt;With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pair that have a RSI below 35 on the 30m interval. Pretty neat!&lt;/p&gt;
 
 &lt;h2 id=&quot;dockerfiles&quot;&gt;dockerfile(s)&lt;/h2&gt;
-&lt;p&gt;First off, lets start with a fresh and current Node image :&lt;/p&gt;
+&lt;p&gt;First off, let’s start with a fresh and current Node image :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt;&lt;span class=&quot;s&quot;&gt; node:10.12&lt;/span&gt;
 
@@ -77,7 +77,7 @@ The process will not exit if mongoose still has a connection idle, so we need to
 
 &lt;h2 id=&quot;docker-compose&quot;&gt;docker-compose&lt;/h2&gt;
 &lt;p&gt;Remember when I used MongoDB? Yeah, we need a mongo container too!
-This simple docker-compose file will build and start every containers in this order : &lt;code class=&quot;highlighter-rouge&quot;&gt;mongo&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;warmup&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;feed&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;bot&lt;/code&gt;.&lt;/p&gt;
+This simple docker-compose file will build and start every container in this order : &lt;code class=&quot;highlighter-rouge&quot;&gt;mongo&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;warmup&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;feed&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;bot&lt;/code&gt;.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-docker&quot; data-lang=&quot;docker&quot;&gt;version: &quot;3&quot;
 services:

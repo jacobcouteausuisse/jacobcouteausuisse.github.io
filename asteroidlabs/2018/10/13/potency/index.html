@@ -119,14 +119,14 @@
   <span class="post-date">13 Oct 2018</span>
   <p>I very much like the RSI indicator for swing trading. It provides and easy way to understand the current market trend, and can be easily interpreted by a program since it’s only a single number.</p>
 
-<p>This project is going to be build using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance. Naming is project is always a weird process. This time the protorype will carry the name <em>potency</em>, because it is very potent. Do you see how funny I am? I thought so.</p>
+<p>This project is going to be built using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance. Naming a project is always a weird process. This time the prototype will carry the name <em>potency</em>, because it is very potent. Do you see how funny I am? I thought so.</p>
 
 <h2 id="goals">goals</h2>
-<p>Basicaly, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ RSI from the (local) historic data, and send it to me using Telegram. Eventualy, if it bahaves well, I want the trading to be automated.</p>
+<p>Basically, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ RSI from the (local) historic data, and send it to me using Telegram. Eventually, if it behaves well, I want the trading to be automated.</p>
 
 <h2 id="warmup">warmup</h2>
-<p>As with all exercices, we need some warmup first. In this case, we will query the last 20 (14 is the real minimum) candles from Binance, with which we can calculate the RSI.
-Using <a href="https://github.com/zoeyg/binance">zoeyg’s binance</a> module, I can easily query market data from binance using :</p>
+<p>As with all exercises, we need some warmup first. In this case, we will query the last 20 (14 is the real minimum) candles from Binance, with which we can calculate the RSI.
+Using <a href="https://github.com/zoeyg/binance">zoeyg’s binance</a> module, I can easily query market data from Binance using :</p>
 
 <figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">binanceRest</span><span class="p">.</span><span class="nx">klines</span><span class="p">({</span>
     <span class="na">symbol</span><span class="p">:</span> <span class="nx">symbol</span><span class="p">,</span>
@@ -140,8 +140,8 @@ Using <a href="https://github.com/zoeyg/binance">zoeyg’s binance</a> module, I
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>The resulting data cointains a bunch of information on the specific candle, and we’ll store it in a MongoDB instance using the appropriate Schema.
-Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a forEach() loop. For the sake of your hair, watch out for NodeJS asychronocity.
+<p>The resulting data contains a bunch of information on the specific candle, and we’ll store it in a MongoDB instance using the appropriate Schema.
+Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a forEach() loop. For the sake of your hair, watch out for NodeJS asychronicity.
 The process will not exit if mongoose still has a connection idle, so we need to manage that. I used a decreasing counter in the mongo.save() loop so that if there’s no more data to be saved, it will kill the connection.</p>
 
 <h2 id="feed">feed</h2>
@@ -177,10 +177,10 @@ The process will not exit if mongoose still has a connection idle, so we need to
   <span class="nx">bot</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">(</span><span class="nx">chatId</span><span class="p">,</span> <span class="nx">resp</span><span class="p">);</span>
 <span class="p">});</span></code></pre></figure>
 
-<p>With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pairs that have a RSI below 35 on the 30m interval. Pretty neat!</p>
+<p>With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pair that have a RSI below 35 on the 30m interval. Pretty neat!</p>
 
 <h2 id="dockerfiles">dockerfile(s)</h2>
-<p>First off, lets start with a fresh and current Node image :</p>
+<p>First off, let’s start with a fresh and current Node image :</p>
 
 <figure class="highlight"><pre><code class="language-docker" data-lang="docker"><span class="k">FROM</span><span class="s"> node:10.12</span>
 
@@ -196,7 +196,7 @@ The process will not exit if mongoose still has a connection idle, so we need to
 
 <h2 id="docker-compose">docker-compose</h2>
 <p>Remember when I used MongoDB? Yeah, we need a mongo container too!
-This simple docker-compose file will build and start every containers in this order : <code class="highlighter-rouge">mongo</code>, <code class="highlighter-rouge">warmup</code>, <code class="highlighter-rouge">feed</code> and <code class="highlighter-rouge">bot</code>.</p>
+This simple docker-compose file will build and start every container in this order : <code class="highlighter-rouge">mongo</code>, <code class="highlighter-rouge">warmup</code>, <code class="highlighter-rouge">feed</code> and <code class="highlighter-rouge">bot</code>.</p>
 
 <figure class="highlight"><pre><code class="language-docker" data-lang="docker">version: "3"
 services:
