@@ -4,13 +4,41 @@
  <title>couteausuis.se</title>
  <link href="https://couteausuis.se/atom.xml" rel="self"/>
  <link href="https://couteausuis.se/"/>
- <updated>2018-11-05T12:44:34-05:00</updated>
+ <updated>2018-11-05T13:09:06-05:00</updated>
  <id>https://couteausuis.se</id>
  <author>
    <name>Jacob Roy</name>
    <email>jacob@asteroidlabs.io</email>
  </author>
 
+ 
+ <entry>
+   <title>email non-revolution</title>
+   <link href="https://couteausuis.se/thinkering/2018/11/05/email-non-revolution/"/>
+   <updated>2018-11-05T00:00:00-05:00</updated>
+   <id>https://couteausuis.se/thinkering/2018/11/05/email-non-revolution</id>
+   <content type="html">&lt;p&gt;When we look back at the last 20 years, can we find one tool that we use every day that hasn’t been “revolutionized”? Cars -&amp;gt; Electric cars, Appliances -&amp;gt; &lt;em&gt;Smart&lt;/em&gt; Appliances, Phones -&amp;gt; Smartphones (can we still call those phones?), Lights -&amp;gt; LED, Wires&amp;amp;Cables -&amp;gt; Wireless, Computers that can display text -&amp;gt; Computers that can simulate the whole universe in VR (not really), Money -&amp;gt; Cryptocurrencies, Houses -&amp;gt; Tiny houses, WEB -&amp;gt; WEB2.0 (Graphical) -&amp;gt; WEB3.0 (Apps), Email -&amp;gt; Email. Yup, despite all the changes elsewhere, email hasn’t changed.&lt;/p&gt;
+
+&lt;h2 id=&quot;i-beg-to-differ&quot;&gt;i beg to differ&lt;/h2&gt;
+&lt;p&gt;Well, of course, it has changed, there was an &lt;em&gt;evolution&lt;/em&gt;, a few small incremental updates. Email clients are essentially web browsers, and emails, nowadays, essentially static webpages. Because of this, emails have gotten prettier with time, following the advance of web design. Email clients have gotten smarter, with SPAM filtering, Smart mailboxes, contacts, etc. In fact, for the majority of people, their web browser &lt;em&gt;is&lt;/em&gt; their email client. That’s right, &lt;em&gt;webmail&lt;/em&gt;. It kinda feels &lt;em&gt;full-circle-y&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;except-not&quot;&gt;except, not&lt;/h2&gt;
+&lt;p&gt;At its core features, modern email is still the same old email. First, let’s consider the UI : Most, if not all, email clients display mailboxes on the left sidebar, besides a top to bottom list of email, showing the title and the sender’s address. When you write an email, you need more information than in other massaging system :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The recipient’s address. Some clients have contacts baked-in, some of which you can import/export contacts lists and some simply don’t have any contact system.&lt;/li&gt;
+  &lt;li&gt;A Subject. This actually makes me angry. A Subject needs to be short, and set the tone for the email’s content. Also, it can’t be too vague. It really doesn’t need your name or the date, because the recipient already know that information from metadata. And it cannot be empty. I’m always deeply puzzled as to what to put in a title. Emails should be self-explanatory. Final rant : why put it on top, as one of the first things to fill? When you write a letter, you normally decide on the title at the end, after all your thoughts have been explained.&lt;/li&gt;
+  &lt;li&gt;The content. Writing an email is still mostly text. Of course you can send links, images, even short videos and on some clients you can go full Microsoft-Word-Clipart-style on it. Even with all that, it’s still missing a dynamic WYSIWYG editor. Also 10Mb size limit? smartphone pictures are bigger than that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;why-would-i-write-an-email&quot;&gt;why would i write an email?&lt;/h2&gt;
+&lt;p&gt;Writing email is mostly like sending a &lt;em&gt;physical&lt;/em&gt; mail. You write something, send it and you never know when the recipient is going to read it.
+On most social networks, you can leave messages to others, messages that can be read in the future. BUT, emails aren’t social networks, you don’t NEED to be trapped inside the email’s network in order for it to work. The only thing you need is an address, like a webpage. And it works from everywhere, with everybody.&lt;/p&gt;
+
+&lt;h2 id=&quot;peaked-or-left-behind&quot;&gt;peaked or left behind&lt;/h2&gt;
+&lt;p&gt;Will emails get better? I think not. For the moment, it is perfect for what we do with it and will only get displaced when a new paradigm shift will occur.
+Yes, it’s usage has reduced since social networks are prevailing, but we still can’t imagine a world without it.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>potency : automatic trading using RSI indicator</title>
@@ -125,34 +153,6 @@ services:
 
 &lt;p&gt;In only one command, I can start the whole project from any computer/server I have, and scale it easily.
 Let’s see how successful my trades are with this!&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>email non-revolution</title>
-   <link href="https://couteausuis.se/thinkering/2018/10/13/email-non-revolution/"/>
-   <updated>2018-10-13T00:00:00-04:00</updated>
-   <id>https://couteausuis.se/thinkering/2018/10/13/email-non-revolution</id>
-   <content type="html">&lt;p&gt;When we look back at the last 20 years, can we find one tool that we use every day that hasn’t been “revolutionized”? Cars -&amp;gt; Electric cars, Appliances -&amp;gt; &lt;em&gt;Smart&lt;/em&gt; Appliances, Phones -&amp;gt; Smartphones (can we still call those phones?), Lights -&amp;gt; LED, Wires&amp;amp;Cables -&amp;gt; Wireless, Computers that can display text -&amp;gt; Computers that can simulate the whole universe in VR (not really), Money -&amp;gt; Cryptocurrencies, Houses -&amp;gt; Tiny houses, WEB -&amp;gt; WEB2.0 (Graphical) -&amp;gt; WEB3.0 (Apps), Email -&amp;gt; Email. Yup, despite all the changes elsewhere, email hasn’t changed.&lt;/p&gt;
-
-&lt;h2 id=&quot;i-beg-to-differ&quot;&gt;i beg to differ&lt;/h2&gt;
-&lt;p&gt;Well, of course, it has changed, there was an &lt;em&gt;evolution&lt;/em&gt;, a few small incremental updates. Email clients are essentially web browsers, and emails, nowadays, essentially static webpages. Because of this, emails have gotten prettier with time, following the advance of web design. Email clients have gotten smarter, with SPAM filtering, Smart mailboxes, contacts, etc. In fact, for the majority of people, their web browser &lt;em&gt;is&lt;/em&gt; their email client. That’s right, &lt;em&gt;webmail&lt;/em&gt;. It kinda feels &lt;em&gt;full-circle-y&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;except-not&quot;&gt;except, not&lt;/h2&gt;
-&lt;p&gt;At its core features, modern email is still the same old email. First, let’s consider the UI : Most, if not all, email clients display mailboxes on the left sidebar, besides a top to bottom list of email, showing the title and the sender’s address. When you write an email, you need more information than in other massaging system :&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The recipient’s address. Some clients have contacts baked-in, some of which you can import/export contacts lists and some simply don’t have any contact system.&lt;/li&gt;
-  &lt;li&gt;A Subject. This actually makes me angry. A Subject needs to be short, and set the tone for the email’s content. Also, it can’t be too vague. It really doesn’t need your name or the date, because the recipient already know that information from metadata. And it cannot be empty. I’m always deeply puzzled as to what to put in a title. Emails should be self-explanatory. Final rant : why put it on top, as one of the first things to fill? When you write a letter, you normally decide on the title at the end, after all your thoughts have been explained.&lt;/li&gt;
-  &lt;li&gt;The content. Writing an email is still mostly text. Of course you can send links, images, even short videos and on some clients you can go full Microsoft-Word-Clipart-style on it. Even with all that, it’s still missing a dynamic WYSIWYG editor. Also 10Mb size limit? smartphone pictures are bigger than that.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;why-would-i-write-an-email&quot;&gt;why would i write an email?&lt;/h2&gt;
-&lt;p&gt;Writing email is mostly like sending a &lt;em&gt;physical&lt;/em&gt; mail. You write something, send it and you never know when the recipient is going to read it.
-On most social networks, you can leave messages to others, messages that can be read in the future. BUT, emails aren’t social networks, you don’t NEED to be trapped inside the email’s network in order for it to work. The only thing you need is an address, like a webpage. And it works from everywhere, with everybody.&lt;/p&gt;
-
-&lt;h2 id=&quot;peaked-or-left-behind&quot;&gt;peaked or left behind&lt;/h2&gt;
-&lt;p&gt;Will emails get better? I think not. For the moment, it is perfect for what we do with it and will only get displaced when a new paradigm shift will occur.
-Yes, it’s usage has reduced since social networks are prevailing, but we still can’t imagine a world without it.&lt;/p&gt;
 </content>
  </entry>
  
