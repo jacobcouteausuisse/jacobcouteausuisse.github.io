@@ -74,18 +74,25 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .container {
-  max-width: 28rem;
+  max-width: 17rem;
   position:relative;
-  left:-7rem;
+  display: table-cell;
+  word-wrap: break-word;
 }
 @media (min-width: 38em) {
   .container {
     max-width: 32rem;
+    left:-7rem;
+    display: block;
+    word-wrap: : normal;
   }
 }
 @media (min-width: 56em) {
   .container {
     max-width: 38rem;
+    left:-7rem;
+       display: block;
+    word-wrap: : normal;
   }
 }
 
