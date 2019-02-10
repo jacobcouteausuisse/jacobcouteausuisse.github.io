@@ -165,8 +165,9 @@ I then loaded all the files into the batch decoder and left it ran the whole nig
 
 <p>To convert my fresh PPM file into something useable (that was the goal of the post) I need another userful tool, imagemagick.</p>
 
-<p>I wrote a small bash script to loop through all the bpg files in a folder and convert them to jpg.
-<code class="highlighter-rouge"><span class="c">#!/bin/bash</span>
+<p>I wrote a small bash script to loop through all the bpg files in a folder and convert them to jpg.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 <span class="nb">dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
 <span class="k">for </span>fullfilename <span class="k">in</span> <span class="nv">$dir</span>/<span class="k">*</span>.bpg<span class="p">;</span> <span class="k">do</span>
     <span class="o">[</span> <span class="nt">-e</span> <span class="s2">"</span><span class="nv">$fullfilename</span><span class="s2">"</span> <span class="o">]</span> <span class="o">||</span> <span class="k">continue
@@ -176,7 +177,7 @@ I then loaded all the files into the batch decoder and left it ran the whole nig
     bpgdec <span class="nt">-o</span> <span class="nv">$filename</span>.ppm <span class="nv">$fullfilename</span>
     convert <span class="nt">-quality</span> 75 <span class="nv">$filename</span>.ppm out/<span class="nv">$filename</span>.jpg
     <span class="nb">rm</span> <span class="nv">$filename</span>.ppm
-<span class="k">done</span></code></p>
+<span class="k">done</span></code></pre></figure>
 
 <h2 id="final-thoughts">final thoughts</h2>
 <p>This bash script is not very parallell-friendly (are any bash scripts?), so I split my stack of 45k images into 8 folder and started 8 scripts separately (4 cores + hyperthreading). In 8hrs everything was done, and I was very happy. I guess the moral of this post is to always try to do it yourself, you’ll learn much more along the way and probably find shortcuts.</p>

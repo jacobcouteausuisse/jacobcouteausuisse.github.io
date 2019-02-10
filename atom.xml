@@ -4,7 +4,7 @@
  <title>couteausuis.se</title>
  <link href="https://couteausuis.se/atom.xml" rel="self"/>
  <link href="https://couteausuis.se/"/>
- <updated>2019-02-05T22:42:41-05:00</updated>
+ <updated>2019-02-10T09:49:47-05:00</updated>
  <id>https://couteausuis.se</id>
  <author>
    <name>Jacob Roy</name>
@@ -45,8 +45,9 @@ I then loaded all the files into the batch decoder and left it ran the whole nig
 
 &lt;p&gt;To convert my fresh PPM file into something useable (that was the goal of the post) I need another userful tool, imagemagick.&lt;/p&gt;
 
-&lt;p&gt;I wrote a small bash script to loop through all the bpg files in a folder and convert them to jpg.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;p&gt;I wrote a small bash script to loop through all the bpg files in a folder and convert them to jpg.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;fullfilename &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$dir&lt;/span&gt;/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.bpg&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$fullfilename&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue
@@ -56,7 +57,7 @@ I then loaded all the files into the batch decoder and left it ran the whole nig
     bpgdec &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.ppm &lt;span class=&quot;nv&quot;&gt;$fullfilename&lt;/span&gt;
     convert &lt;span class=&quot;nt&quot;&gt;-quality&lt;/span&gt; 75 &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.ppm out/&lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.jpg
     &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.ppm
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h2 id=&quot;final-thoughts&quot;&gt;final thoughts&lt;/h2&gt;
 &lt;p&gt;This bash script is not very parallell-friendly (are any bash scripts?), so I split my stack of 45k images into 8 folder and started 8 scripts separately (4 cores + hyperthreading). In 8hrs everything was done, and I was very happy. I guess the moral of this post is to always try to do it yourself, you’ll learn much more along the way and probably find shortcuts.&lt;/p&gt;
