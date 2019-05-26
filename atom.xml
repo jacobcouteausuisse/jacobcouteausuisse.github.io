@@ -4,13 +4,37 @@
  <title>couteausuis.se</title>
  <link href="https://couteausuis.se/atom.xml" rel="self"/>
  <link href="https://couteausuis.se/"/>
- <updated>2019-02-10T09:49:47-05:00</updated>
+ <updated>2019-05-25T23:03:24-04:00</updated>
  <id>https://couteausuis.se</id>
  <author>
    <name>Jacob Roy</name>
    <email>jacob@asteroidlabs.io</email>
  </author>
 
+ 
+ <entry>
+   <title>lejacobroy.com</title>
+   <link href="https://couteausuis.se/archives/2019/05/25/lejacobroy.com/"/>
+   <updated>2019-05-25T00:00:00-04:00</updated>
+   <id>https://couteausuis.se/archives/2019/05/25/lejacobroy.com</id>
+   <content type="html">&lt;p&gt;in 2011, when i was only 15 years old, i decided to build myself a website to showcase my photographs. while working on it, i began adding modules and expending features:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;handmade front-end design&lt;/li&gt;
+  &lt;li&gt;front &amp;amp; back ends build from nothing, in PHP5 and MySQL&lt;/li&gt;
+  &lt;li&gt;when uploading a photograph, the back-end will extract it’s metadata and store it in the DB&lt;/li&gt;
+  &lt;li&gt;fully-featured shopping cart to buy pictures through PayPal (PP integration no longer working)&lt;/li&gt;
+  &lt;li&gt;blogging section using WordPress (no longer functional)&lt;/li&gt;
+  &lt;li&gt;showcase section with other art projects&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;it then began clear that programming was a bigger passion than photography!
+a year later, when i backed up the site, i forgot to choose a latin encoding, resulting in weird glyphs on the restored website&lt;/p&gt;
+
+&lt;p&gt;please, dont judge&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://lejacobroy.000webhostapp.com/&quot;&gt;lejacobroy.com&lt;/a&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>bpg dump</title>
@@ -133,19 +157,21 @@ Yes, it’s usage has reduced since social networks are prevailing, but we still
  </entry>
  
  <entry>
-   <title>potency : automatic trading using RSI indicator</title>
+   <title>Meteor Trader : automatic trading using a custom-baked indicator</title>
    <link href="https://couteausuis.se/asteroidlabs/2018/10/13/potency/"/>
    <updated>2018-10-13T00:00:00-04:00</updated>
    <id>https://couteausuis.se/asteroidlabs/2018/10/13/potency</id>
-   <content type="html">&lt;p&gt;I very much like the RSI indicator for swing trading. It provides and easy way to understand the current market trend, and can be easily interpreted by a program since it’s only a single number.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;em&gt;TLDR; see the gains here : &lt;a href=&quot;https://asteroidlabs.io/dashboard/&quot;&gt;Asteroid Labs Dashboard&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;This project is going to be built using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance. Naming a project is always a weird process. This time the prototype will carry the name &lt;em&gt;potency&lt;/em&gt;, because it is very potent. Do you see how funny I am? I thought so.&lt;/p&gt;
+&lt;p&gt;Early on in our trading-chart analysis, we devised a simple yet effective indicator that wasn’t available anywhere. After successfully programming it ans testing it manually, it was time to hit the high road and automatate the hole thing.&lt;/p&gt;
+
+&lt;p&gt;This project is going to be built using NodeJS and Docker, for portability between my MacBook, RaspberryPi and Vultr instance.&lt;/p&gt;
 
 &lt;h2 id=&quot;goals&quot;&gt;goals&lt;/h2&gt;
-&lt;p&gt;Basically, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ RSI from the (local) historic data, and send it to me using Telegram. Eventually, if it behaves well, I want the trading to be automated.&lt;/p&gt;
+&lt;p&gt;Basically, I want to program to gather data about markets and store it in a database, to keep a history. On demand, it will calculate the pairs’ &lt;em&gt;Meteor Indicator&lt;/em&gt; from the (local) historic data, and send it to me using Telegram. Eventually, if it behaves well, I want the trading to be automated (which include : buy, sell orders as well as prices &amp;amp; quantity calculations, further market analysis, and probably losing money).&lt;/p&gt;
 
 &lt;h2 id=&quot;warmup&quot;&gt;warmup&lt;/h2&gt;
-&lt;p&gt;As with all exercises, we need some warmup first. In this case, we will query the last 20 (14 is the real minimum) candles from Binance, with which we can calculate the RSI.
+&lt;p&gt;As with all exercises, we need some warmup first. In this case, we will query the last 20 candles from Binance, with which we can calculate the Meteor Indicator.
 Using &lt;a href=&quot;https://github.com/zoeyg/binance&quot;&gt;zoeyg’s binance&lt;/a&gt; module, I can easily query market data from Binance using :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;binanceRest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;klines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
@@ -161,11 +187,11 @@ Using &lt;a href=&quot;https://github.com/zoeyg/binance&quot;&gt;zoeyg’s binan
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;The resulting data contains a bunch of information on the specific candle, and we’ll store it in a MongoDB instance using the appropriate Schema.
-Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a forEach() loop. For the sake of your hair, watch out for NodeJS asychronicity.
+Now, because I want to query a list of pairs, I wrap it up in a function and call it inside a for loop. For the sake of your hair, watch out for NodeJS asychronicity.
 The process will not exit if mongoose still has a connection idle, so we need to manage that. I used a decreasing counter in the mongo.save() loop so that if there’s no more data to be saved, it will kill the connection.&lt;/p&gt;
 
 &lt;h2 id=&quot;feed&quot;&gt;feed&lt;/h2&gt;
-&lt;p&gt;Binance has a very robust API and offers a WebSocket stream that we can connect to and receive &lt;em&gt;pushed&lt;/em&gt; data. Using the same module, we can easily subscribe to a ticker’s candles stream :&lt;/p&gt;
+&lt;p&gt;Binance has a very robust API and offers a WebSocket stream that we can connect to and receive &lt;em&gt;pushed&lt;/em&gt; data. Using the same module, we can easily subscribe to a tickers’ candles stream :&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;binanceWS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onKline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;symbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;kline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// save only full candles&lt;/span&gt;
@@ -180,10 +206,10 @@ The process will not exit if mongoose still has a connection idle, so we need to
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// skip the pushed update&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now, Binance’s stream will push updates every second, but I only want to save updates when the candle is closed, so I test if the kline is final. One day, I would like to implement a type of “last-tick-update” to get more precise RSI calculations using the latest data, and the next 14 intervals, instead of using only last 14 interval.&lt;/p&gt;
+&lt;p&gt;Now, Binance’s stream will push updates every second, but I only want to save updates when the candle is closed, so I test if the kline is final.&lt;/p&gt;
 
 &lt;h2 id=&quot;bot&quot;&gt;bot&lt;/h2&gt;
-&lt;p&gt;During the programming of the other two parts, I decided to make a Telegram bot, where I could send query and it would reply with the current RSI for entry and exit, on different intervals. For a simple bot, I use &lt;a href=&quot;https://github.com/yagop/node-telegram-bot-api&quot;&gt;yagop’s node-telegram-bot-api&lt;/a&gt; module. It’s very easy to get started, for example with the keyword “/echo”:&lt;/p&gt;
+&lt;p&gt;During the programming of the other two parts, I decided to make a Telegram bot, where I could type queries and it would reply with the current Meteor Indicator and prices for entry and exit, on different intervals. For a simple bot, I use &lt;a href=&quot;https://github.com/yagop/node-telegram-bot-api&quot;&gt;yagop’s node-telegram-bot-api&lt;/a&gt; module. It’s very easy to get started, for example with the keyword “/echo”:&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;bot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onText&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;echo &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;.+&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;// 'msg' is the received Message from Telegram&lt;/span&gt;
@@ -197,7 +223,7 @@ The process will not exit if mongoose still has a connection idle, so we need to
   &lt;span class=&quot;nx&quot;&gt;bot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;chatId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pair that have a RSI below 35 on the 30m interval. Pretty neat!&lt;/p&gt;
+&lt;p&gt;With this, I can use a keyword with multiple options to craft a very specific query. For example, using “/check buy 30m”, the bot will reply with every pair that have a Meteor Indicator suggesting a long position on the 30m interval. Pretty neat!&lt;/p&gt;
 
 &lt;h2 id=&quot;dockerfiles&quot;&gt;dockerfile(s)&lt;/h2&gt;
 &lt;p&gt;First off, let’s start with a fresh and current Node image :&lt;/p&gt;
