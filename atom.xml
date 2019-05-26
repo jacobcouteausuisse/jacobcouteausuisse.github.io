@@ -4,7 +4,7 @@
  <title>couteausuis.se</title>
  <link href="https://couteausuis.se/atom.xml" rel="self"/>
  <link href="https://couteausuis.se/"/>
- <updated>2019-05-25T23:06:40-04:00</updated>
+ <updated>2019-05-25T23:09:22-04:00</updated>
  <id>https://couteausuis.se</id>
  <author>
    <name>Jacob Roy</name>
@@ -25,6 +25,7 @@
   &lt;li&gt;fully-featured shopping cart to buy pictures through PayPal (PP integration no longer working)&lt;/li&gt;
   &lt;li&gt;blogging section using WordPress (no longer functional)&lt;/li&gt;
   &lt;li&gt;showcase section with other art projects&lt;/li&gt;
+  &lt;li&gt;users would buy pictures and received an encrypted link by email, allowing them to download a server-generated zip file containing the picture and license.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;it then began clear that programming was a bigger passion than photography!
